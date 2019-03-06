@@ -68,28 +68,13 @@ predict_unseen <-predict(fit, data_test, type = 'class')
 table_mat <- table(data_test$survived, predict_unseen)
 table_mat
 
-#The model correctly predicted 106 dead passengers but classified 15 survivors as dead. 
-#By analogy, the model misclassified 30 passengers as survivors while they turned out to be dead.
-
-
-
-
-#The confusion matrix is a better choice to evaluate the classification performance. 
-#The general idea is to count the number of times True instances are classified are False.
-
-#sum(diag(table_mat)): Sum of the diagonal
-#sum(table_mat): Sum of the matrix.
 
 accuracy_Test <- sum(diag(table_mat)) / sum(table_mat)
 print(paste('Accuracy for test', accuracy_Test))
 
 #You have a score of 78 percent for the test set. You can replicate the same exercise with the training dataset.
 
-#We will proceed as follow:
-#Construct function to return accuracy
-#Tune the maximum depth
-#Tune the minimum number of sample a node must have before it can split
-#Tune the minimum number of sample a leaf node must have
+
 
 accuracy_tune <- function(fit) {
     predict_unseen <- predict(fit, data_test, type = 'class')
